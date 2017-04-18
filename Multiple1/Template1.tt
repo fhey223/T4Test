@@ -1,0 +1,6 @@
+﻿<#@ template language="C#" hostspecific="True"#>  
+<#@include file="Manager.ttinclude"#>  
+<# var manager = Manager.Create(Host, GenerationEnvironment); #> 
+ <# manager.StartNewFile("Employee.generated.cs"); #>  
+  public class Employee {  }  
+  <# manager.EndBlock(); #>  

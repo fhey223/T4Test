@@ -1,0 +1,8 @@
+C:\Users\dongwj5\Documents\Visual Studio 2015\Projects\T4Test\Multiple\bin\Debug\Multiple.exe.config
+C:\Users\dongwj5\Documents\Visual Studio 2015\Projects\T4Test\Multiple\obj\Debug\Multiple.csprojResolveAssemblyReference.cache
+C:\Users\dongwj5\Documents\Visual Studio 2015\Projects\T4Test\Multiple\bin\Debug\Multiple.exe
+C:\Users\dongwj5\Documents\Visual Studio 2015\Projects\T4Test\Multiple\bin\Debug\Multiple.pdb
+C:\Users\dongwj5\Documents\Visual Studio 2015\Projects\T4Test\Multiple\bin\Debug\Multiple.exe.CodeAnalysisLog.xml
+C:\Users\dongwj5\Documents\Visual Studio 2015\Projects\T4Test\Multiple\bin\Debug\Multiple.exe.lastcodeanalysissucceeded
+C:\Users\dongwj5\Documents\Visual Studio 2015\Projects\T4Test\Multiple\obj\Debug\Multiple.exe
+C:\Users\dongwj5\Documents\Visual Studio 2015\Projects\T4Test\Multiple\obj\Debug\Multiple.pdb

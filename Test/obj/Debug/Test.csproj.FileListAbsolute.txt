@@ -1,0 +1,6 @@
+C:\Users\dongwj5\Documents\Visual Studio 2015\Projects\T4Test\Test\bin\Debug\Test.exe.config
+C:\Users\dongwj5\Documents\Visual Studio 2015\Projects\T4Test\Test\bin\Debug\Test.exe
+C:\Users\dongwj5\Documents\Visual Studio 2015\Projects\T4Test\Test\bin\Debug\Test.pdb
+C:\Users\dongwj5\Documents\Visual Studio 2015\Projects\T4Test\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
+C:\Users\dongwj5\Documents\Visual Studio 2015\Projects\T4Test\Test\obj\Debug\Test.exe
+C:\Users\dongwj5\Documents\Visual Studio 2015\Projects\T4Test\Test\obj\Debug\Test.pdb

@@ -1,0 +1,61 @@
+﻿ <#@ assembly name="Microsoft.SqlServer.ConnectionInfo" #>
+ <#@ assembly name="Microsoft.SqlServer.Smo" #>
+ <#@ assembly name="Microsoft.SqlServer.Management.Sdk.Sfc" #>
+ <#@ import namespace="System" #>
+ <#@ import namespace="Microsoft.SqlServer.Management.Smo" #>
+
+ <#+
+ public abstract class ProcedureTemplate : Template
+ {
+     public OperationKind OperationKind {get; private set;}
+     public Table Table {get; private set;}
+     public const string VersionNoField             = "VERSION_NO";
+     public const string VersionNoParameterName     = "@p_version_no";
+     public ProcedureTemplate(string databaseName, string tableName,OperationKind operationKind)
+     {
+         this.OperationKind     = operationKind;
+         Server server = new Server();
+         Database database = new Database(server,databaseName);
+         this.Table = new Table(database, tableName);
+         this.Table.Refresh();
+     }
+     public virtual string GetProcedureName()
+     {
+         switch(this.OperationKind)
+         {
+             case OperationKind.Insert:    return "P_" +this.Table.Name.Remove(0,2) + "_I";
+             case OperationKind.Update:    return "P_" +this.Table.Name.Remove(0,2) + "_U";
+             default:                    return "P_" +this.Table.Name.Remove(0,2) + "_D";
+         }        
+     }
+     protected virtual string GetParameterName(string columnName)
+     {
+         return "@p_" + columnName.ToLower();
+     }
+     protected abstract void RenderParameterList();
+     protected abstract void RenderProcedureBody();        
+     public override string TransformText()
+     {
+ #>
+ IF OBJECT_ID( '[dbo].[<#=  GetProcedureName()#>]', 'P' ) IS NOT NULL
+    DROP  PROCEDURE  [dbo].[<#=  GetProcedureName()#>]
+ GO
+ CREATE PROCEDURE [dbo].[<#= GetProcedureName() #>]
+ (
+ <#+
+         PushIndent("\t");
+         this.RenderParameterList();
+         PopIndent();
+ #>
+ )
+ AS
+ <#+
+         PushIndent("\t");
+         this.RenderProcedureBody();
+         PopIndent(); 
+         PopIndent(); 
+         WriteLine("\nGO");
+         return this.GenerationEnvironment.ToString();
+    }
+ }
+ #>

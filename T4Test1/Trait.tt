@@ -1,0 +1,15 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+
+<# Trait(() => { #>
+        public void Play()
+        {
+            System.Console.WriteLine(this.Name + "，游戏中！");
+        }
+<# }, "T4Study.Trait.Dog", "T4Study.Trait.Man"); #>
+
+<#@include file="../Includes/Trait.txt" #>

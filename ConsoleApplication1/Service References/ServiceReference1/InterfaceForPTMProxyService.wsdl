@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="InterfaceForPTMProxyService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/JMS.DTO.Ptm" />
+      <xs:element name="GetBuilding">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="buildAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="buildNo" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="buildName" nillable="true" type="xs:string" />
+            <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="buildID" nillable="true" type="q1:ArrayOflong" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetBuildingResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/JMS.DTO.Ptm" minOccurs="0" name="GetBuildingResult" nillable="true" type="q2:ArrayOfBuildingDto" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProject">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="projectAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="projectNo" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="projectName" nillable="true" type="xs:string" />
+            <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="projectID" nillable="true" type="q3:ArrayOflong" />
+            <xs:element minOccurs="0" name="buildID" type="xs:long" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProjectResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/JMS.DTO.Ptm" minOccurs="0" name="GetProjectResult" nillable="true" type="q4:ArrayOfProjectDto" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAllProjects">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAllProjectsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/JMS.DTO.Ptm" minOccurs="0" name="GetAllProjectsResult" nillable="true" type="q5:ArrayOfProjectDto" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetRoom">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="houseSeatID" nillable="true" type="q6:ArrayOflong" />
+            <xs:element minOccurs="0" name="projectID" type="xs:long" />
+            <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="unitID" nillable="true" type="q7:ArrayOflong" />
+            <xs:element minOccurs="0" name="roomID" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="roomNo" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="unitName" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="houseSeatName" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+            <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetRoomResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/JMS.DTO.Ptm" minOccurs="0" name="GetRoomResult" nillable="true" type="q8:RoomDto" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCase">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="roomID" nillable="true" type="q9:ArrayOfstring" />
+            <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="salesType" nillable="true" type="q10:ArrayOfint" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCaseResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/JMS.DTO.Ptm" minOccurs="0" name="GetCaseResult" nillable="true" type="q11:ArrayOfCaseDto" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetHouseSeat">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="projectID" nillable="true" type="xs:long" />
+            <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="houseSeatID" nillable="true" type="q12:ArrayOflong" />
+            <xs:element minOccurs="0" name="projectName" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="houseSeatName" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetHouseSeatResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/JMS.DTO.Ptm" minOccurs="0" name="GetHouseSeatResult" nillable="true" type="q13:ArrayOfHouseSeatDto" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProjectMember">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="projectID" type="xs:long" />
+            <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="role" nillable="true" type="q14:ArrayOfint" />
+            <xs:element minOccurs="0" name="empNo" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="empName" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProjectMemberResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/JMS.DTO.Ptm" minOccurs="0" name="GetProjectMemberResult" nillable="true" type="q15:ArrayOfProjectMemberDto" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSingleRoom">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSingleRoomResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/JMS.DTO.Ptm" minOccurs="0" name="GetSingleRoomResult" nillable="true" type="q16:RoomDto.Room" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayOflong">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="long" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOflong" nillable="true" type="tns:ArrayOflong" />
+      <xs:complexType name="ArrayOfstring">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfstring" nillable="true" type="tns:ArrayOfstring" />
+      <xs:complexType name="ArrayOfint">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="int" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfint" nillable="true" type="tns:ArrayOfint" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/JMS.DTO.Ptm" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/JMS.DTO.Ptm" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/JMS.DTO" />
+      <xs:complexType name="ArrayOfBuildingDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="BuildingDto" nillable="true" type="tns:BuildingDto" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfBuildingDto" nillable="true" type="tns:ArrayOfBuildingDto" />
+      <xs:complexType name="BuildingDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BuildAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BuildID" type="xs:long" />
+          <xs:element minOccurs="0" name="BuildName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BuildNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Developer" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HousesTypeDto" nillable="true" type="tns:ArrayOfBuildingDto.HousesType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="BuildingDto" nillable="true" type="tns:BuildingDto" />
+      <xs:complexType name="ArrayOfBuildingDto.HousesType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="BuildingDto.HousesType" nillable="true" type="tns:BuildingDto.HousesType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfBuildingDto.HousesType" nillable="true" type="tns:ArrayOfBuildingDto.HousesType" />
+      <xs:complexType name="BuildingDto.HousesType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PropertyTypeID" type="xs:long" />
+          <xs:element minOccurs="0" name="PropertyTypeName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="BuildingDto.HousesType" nillable="true" type="tns:BuildingDto.HousesType" />
+      <xs:complexType name="ArrayOfProjectDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ProjectDto" nillable="true" type="tns:ProjectDto" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfProjectDto" nillable="true" type="tns:ArrayOfProjectDto" />
+      <xs:complexType name="ProjectDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BuildAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BuildID" type="xs:long" />
+          <xs:element minOccurs="0" name="BuildName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BuildNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BuildingStatus" type="xs:int" />
+          <xs:element minOccurs="0" name="DepartmentName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DepartmentNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Developer" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HandOverDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ProjectAddress" nillable="true" type="xs:string" />
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/JMS.DTO" minOccurs="0" name="ProjectHistory" nillable="true" type="q1:ArrayOfProjectHistory" />
+          <xs:element minOccurs="0" name="ProjectID" type="xs:long" />
+          <xs:element minOccurs="0" name="ProjectManagerID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ProjectManagerName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ProjectName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ProjectNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PropertyTypeDtoList" nillable="true" type="tns:ArrayOfProjectDto.PropertyTypeList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ProjectDto" nillable="true" type="tns:ProjectDto" />
+      <xs:complexType name="ArrayOfProjectDto.PropertyTypeList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ProjectDto.PropertyTypeList" nillable="true" type="tns:ProjectDto.PropertyTypeList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfProjectDto.PropertyTypeList" nillable="true" type="tns:ArrayOfProjectDto.PropertyTypeList" />
+      <xs:complexType name="ProjectDto.PropertyTypeList">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PropertyTypeID" type="xs:long" />
+          <xs:element minOccurs="0" name="PropertyTypeName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ProjectDto.PropertyTypeList" nillable="true" type="tns:ProjectDto.PropertyTypeList" />
+      <xs:complexType name="RoomDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllRows" type="xs:int" />
+          <xs:element minOccurs="0" name="CurrentPageIndex" type="xs:int" />
+          <xs:element minOccurs="0" name="PageAllCount" type="xs:int" />
+          <xs:element minOccurs="0" name="RoomListDto" nillable="true" type="tns:ArrayOfRoomDto.Room" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="RoomDto" nillable="true" type="tns:RoomDto" />
+      <xs:complexType name="ArrayOfRoomDto.Room">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="RoomDto.Room" nillable="true" type="tns:RoomDto.Room" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfRoomDto.Room" nillable="true" type="tns:ArrayOfRoomDto.Room" />
+      <xs:complexType name="RoomDto.Room">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FloorNo" type="xs:int" />
+          <xs:element minOccurs="0" name="FullAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HallNum" type="xs:int" />
+          <xs:element minOccurs="0" name="Orientation" type="xs:int" />
+          <xs:element minOccurs="0" name="ParentRoomID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ProjectName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PropertyTypeName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RoomArea" type="xs:decimal" />
+          <xs:element minOccurs="0" name="RoomID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RoomName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RoomNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RoomNum" type="xs:int" />
+          <xs:element minOccurs="0" name="SeatName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ToiletNum" type="xs:int" />
+          <xs:element minOccurs="0" name="UinitID" type="xs:long" />
+          <xs:element minOccurs="0" name="UinitName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="RoomDto.Room" nillable="true" type="tns:RoomDto.Room" />
+      <xs:complexType name="ArrayOfCaseDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="CaseDto" nillable="true" type="tns:CaseDto" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfCaseDto" nillable="true" type="tns:ArrayOfCaseDto" />
+      <xs:complexType name="CaseDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CaseID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CellPhone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomerID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomerName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OperationDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Remark" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TotalArea" type="xs:decimal" />
+          <xs:element minOccurs="0" name="TotalMoney" type="xs:decimal" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CaseDto" nillable="true" type="tns:CaseDto" />
+      <xs:complexType name="ArrayOfHouseSeatDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="HouseSeatDto" nillable="true" type="tns:HouseSeatDto" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfHouseSeatDto" nillable="true" type="tns:ArrayOfHouseSeatDto" />
+      <xs:complexType name="HouseSeatDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="HouseSeatID" type="xs:long" />
+          <xs:element minOccurs="0" name="HouseSeatName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ParentHouseSeatID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="HouseSeatDto" nillable="true" type="tns:HouseSeatDto" />
+      <xs:complexType name="ArrayOfProjectMemberDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ProjectMemberDto" nillable="true" type="tns:ProjectMemberDto" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfProjectMemberDto" nillable="true" type="tns:ArrayOfProjectMemberDto" />
+      <xs:complexType name="ProjectMemberDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DomainAccount" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EmpName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EmpNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Role" type="xs:int" />
+          <xs:element minOccurs="0" name="RoleName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SupervisorName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SupervisorNo" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ProjectMemberDto" nillable="true" type="tns:ProjectMemberDto" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/JMS.DTO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/JMS.DTO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayOfProjectHistory">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ProjectHistory" nillable="true" type="tns:ProjectHistory" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfProjectHistory" nillable="true" type="tns:ArrayOfProjectHistory" />
+      <xs:complexType name="ProjectHistory">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:BaseDto">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="OldProjectName" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ProjectName" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ProjectSysNo" type="xs:long" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ProjectHistory" nillable="true" type="tns:ProjectHistory" />
+      <xs:complexType name="BaseDto">
+        <xs:sequence>
+          <xs:element name="_createDate" type="xs:dateTime" />
+          <xs:element name="_modifyDate" type="xs:dateTime" />
+          <xs:element name="_x003C_AllCount_x003E_k__BackingField" type="xs:int" />
+          <xs:element name="_x003C_CreateUserName_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_CreateUserNo_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_IsDelete_x003E_k__BackingField" type="xs:boolean" />
+          <xs:element name="_x003C_ModifyUserName_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_ModifyUserNo_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_Secret_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_SysNo_x003E_k__BackingField" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="BaseDto" nillable="true" type="tns:BaseDto" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IInterfaceForPTMService_GetBuilding_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBuilding" />
+  </wsdl:message>
+  <wsdl:message name="IInterfaceForPTMService_GetBuilding_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBuildingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInterfaceForPTMService_GetProject_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProject" />
+  </wsdl:message>
+  <wsdl:message name="IInterfaceForPTMService_GetProject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInterfaceForPTMService_GetAllProjects_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllProjects" />
+  </wsdl:message>
+  <wsdl:message name="IInterfaceForPTMService_GetAllProjects_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInterfaceForPTMService_GetRoom_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoom" />
+  </wsdl:message>
+  <wsdl:message name="IInterfaceForPTMService_GetRoom_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoomResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInterfaceForPTMService_GetCase_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCase" />
+  </wsdl:message>
+  <wsdl:message name="IInterfaceForPTMService_GetCase_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInterfaceForPTMService_GetHouseSeat_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHouseSeat" />
+  </wsdl:message>
+  <wsdl:message name="IInterfaceForPTMService_GetHouseSeat_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHouseSeatResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInterfaceForPTMService_GetProjectMember_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectMember" />
+  </wsdl:message>
+  <wsdl:message name="IInterfaceForPTMService_GetProjectMember_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectMemberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInterfaceForPTMService_GetSingleRoom_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSingleRoom" />
+  </wsdl:message>
+  <wsdl:message name="IInterfaceForPTMService_GetSingleRoom_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSingleRoomResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IInterfaceForPTMService">
+    <wsdl:operation name="GetBuilding">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterfaceForPTMService/GetBuilding" message="tns:IInterfaceForPTMService_GetBuilding_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterfaceForPTMService/GetBuildingResponse" message="tns:IInterfaceForPTMService_GetBuilding_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterfaceForPTMService/GetProject" message="tns:IInterfaceForPTMService_GetProject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterfaceForPTMService/GetProjectResponse" message="tns:IInterfaceForPTMService_GetProject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProjects">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterfaceForPTMService/GetAllProjects" message="tns:IInterfaceForPTMService_GetAllProjects_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterfaceForPTMService/GetAllProjectsResponse" message="tns:IInterfaceForPTMService_GetAllProjects_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoom">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterfaceForPTMService/GetRoom" message="tns:IInterfaceForPTMService_GetRoom_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterfaceForPTMService/GetRoomResponse" message="tns:IInterfaceForPTMService_GetRoom_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCase">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterfaceForPTMService/GetCase" message="tns:IInterfaceForPTMService_GetCase_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterfaceForPTMService/GetCaseResponse" message="tns:IInterfaceForPTMService_GetCase_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseSeat">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterfaceForPTMService/GetHouseSeat" message="tns:IInterfaceForPTMService_GetHouseSeat_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterfaceForPTMService/GetHouseSeatResponse" message="tns:IInterfaceForPTMService_GetHouseSeat_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectMember">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterfaceForPTMService/GetProjectMember" message="tns:IInterfaceForPTMService_GetProjectMember_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterfaceForPTMService/GetProjectMemberResponse" message="tns:IInterfaceForPTMService_GetProjectMember_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSingleRoom">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterfaceForPTMService/GetSingleRoom" message="tns:IInterfaceForPTMService_GetSingleRoom_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterfaceForPTMService/GetSingleRoomResponse" message="tns:IInterfaceForPTMService_GetSingleRoom_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="interfaceForPTMPEndpoint" type="tns:IInterfaceForPTMService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetBuilding">
+      <soap:operation soapAction="http://tempuri.org/IInterfaceForPTMService/GetBuilding" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProject">
+      <soap:operation soapAction="http://tempuri.org/IInterfaceForPTMService/GetProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProjects">
+      <soap:operation soapAction="http://tempuri.org/IInterfaceForPTMService/GetAllProjects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoom">
+      <soap:operation soapAction="http://tempuri.org/IInterfaceForPTMService/GetRoom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCase">
+      <soap:operation soapAction="http://tempuri.org/IInterfaceForPTMService/GetCase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseSeat">
+      <soap:operation soapAction="http://tempuri.org/IInterfaceForPTMService/GetHouseSeat" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectMember">
+      <soap:operation soapAction="http://tempuri.org/IInterfaceForPTMService/GetProjectMember" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSingleRoom">
+      <soap:operation soapAction="http://tempuri.org/IInterfaceForPTMService/GetSingleRoom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InterfaceForPTMProxyService">
+    <wsdl:port name="interfaceForPTMPEndpoint" binding="tns:interfaceForPTMPEndpoint">
+      <soap:address location="http://localhost:2717/InterfaceForPtm.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
